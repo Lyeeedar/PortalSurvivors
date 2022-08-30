@@ -36,7 +36,6 @@ public class ShootWand : MonoBehaviour
             GameObject obj = Instantiate(projectilePrefab, player.transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
             ProjectileMove projectile = obj.GetComponent<ProjectileMove>();
             projectile.enemySpawner = enemySpawner;
-            projectile.direction = vec.normalized;
         }
     }
 }

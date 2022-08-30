@@ -4,30 +4,23 @@ using UnityEngine;
 
 public class ProjectileMove : MonoBehaviour
 {
-    public Vector3 direction;
     public EnemySpawner enemySpawner;
 
     [SerializeField] private float speed = 1f;
     [SerializeField] private float lifetime = 1f;
 
-    private float remaining;
+    private Vector3 moveVector;
 
 	private void Start()
 	{
-        remaining = lifetime;
+        moveVector = Vector3.up * speed;
+
+        StartCoroutine(DestroyAfterTimeout());
 	}
 
-	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
     {
-        remaining -= Time.deltaTime;
-        if (remaining <= 0f)
-		{
-            Destroy(gameObject);
-            return;
-		}
-
-        transform.position += direction * speed * Time.deltaTime;
+        transform.Translate(moveVector * Time.deltaTime);
 
         var size = 0.5f;
         var hsize = size / 2f;
@@ -40,4 +33,10 @@ public class ProjectileMove : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    IEnumerator DestroyAfterTimeout()
+	{
+        yield return new WaitForSeconds(lifetime);
+        Destroy(gameObject);
+	}
 }
