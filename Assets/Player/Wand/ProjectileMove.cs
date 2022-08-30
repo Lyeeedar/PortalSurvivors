@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileMove : MonoBehaviour
 {
     public EnemySpawner enemySpawner;
+    public ParticleSystem hitEffect;
 
     [SerializeField] private float speed = 1f;
     [SerializeField] private float lifetime = 1f;
@@ -30,6 +31,9 @@ public class ProjectileMove : MonoBehaviour
         if (intersecting != null)
 		{
             enemySpawner.Kill(intersecting);
+
+            Instantiate(hitEffect, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
     }

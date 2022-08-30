@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9fd26d1037a6743b7596c8fb272fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
   enemySpawner: {fileID: 0}
+  hitEffect: {fileID: 6307952626390346348, guid: 83353d6223ea62f4cafb11121f536d7f, type: 3}
   speed: 3
   lifetime: 1
